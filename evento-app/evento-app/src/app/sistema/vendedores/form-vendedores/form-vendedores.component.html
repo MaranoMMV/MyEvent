@@ -1,0 +1,83 @@
+<h1>{{ vendedor?.id ? "Editar" : "Adicionar" }} Vendedor</h1>
+<button mat-raised-button color="primary">
+  <mat-icon>add</mat-icon>Adicionar
+</button>
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+  @if (vendedor?.id) {
+  <mat-form-field disabled="true">
+    <mat-label>ID:</mat-label>
+    <input formControlName="id" matInput placeholder="id" />
+  </mat-form-field>
+  }
+
+  <mat-form-field>
+    <mat-label>Nome:</mat-label>
+    <input
+      formControlName="nome"
+      matInput
+      placeholder="Digite o nome do vendedor(a)"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Role</mat-label>
+    <input formControlName="role" matInput placeholder="Digite a Role" />
+  </mat-form-field>
+  @if(!vendedor?.id){
+  <mat-form-field>
+    <mat-label>Departamento:</mat-label>
+    <mat-select matInput formControlName="departamentoId">
+      @for (item of departamentos; track item) {
+      <mat-option [value]="item.id">{{ item.nome }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  }@else {
+  <mat-form-field>
+    <mat-label>Departamento:</mat-label>
+    <mat-select matInput formControlName="departamento">
+      @for (item of departamentos; track item) {
+      <mat-option [value]="item.id">{{ item.nome }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  }
+
+  <mat-form-field>
+    <mat-label>Usuario</mat-label>
+    <input formControlName="usuario" matInput placeholder="Digite a usuario" />
+  </mat-form-field>
+
+  @if (!vendedor?.id) {
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input
+        formControlName="password"
+        matInput
+        placeholder="Digite a Password"
+      />
+    </mat-form-field>
+
+  }
+
+  <mat-checkbox formControlName="status">Ativo</mat-checkbox>
+
+  <br />
+  @if (!vendedor?.id) {
+  <button type="submit" mat-raised-button color="primary">
+    <i class="fa fa-save"></i> Salvar Cadastro
+  </button>
+  } @if (vendedor?.id) {
+  <button type="submit" mat-raised-button color="primary">
+    <i class="fa fa-sync-alt"></i> Atualizar
+  </button>
+  }
+
+  <button
+    mat-button
+    color="primary"
+    class="margin-button"
+    (click)="voltarListagem()"
+  >
+    <mat-icon>arrow_back</mat-icon>Voltar
+  </button>
+</form>

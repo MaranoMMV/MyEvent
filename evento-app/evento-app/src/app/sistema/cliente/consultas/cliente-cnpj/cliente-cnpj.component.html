@@ -1,0 +1,71 @@
+<h1>Procurar cliente por CNPJ</h1>
+    <button mat-raised-button color="primary" routerLink="form">
+      <mat-icon>add</mat-icon>Adicionar
+    </button>
+    <form [formGroup]="formularioPorCNPJ" (ngSubmit)="onSubmitCNPJ()">
+      <mat-form-field>
+        <mat-label>Cnpj:</mat-label>
+        <input
+          formControlName="cnpj"
+          matInput
+          placeholder="Digite o CNPJ do Cliente(a)"
+          mask="00.000.000/0000-00"
+        />
+      </mat-form-field>
+      <br />
+      <button type="submit" mat-raised-button color="primary">
+        <mat-icon>find</mat-icon>Buscar
+      </button>
+    </form>
+
+    <br />
+    <table
+      mat-table
+      [dataSource]="clientePorCnpjDataSouorce"
+      class="mat-elevation-z8"
+    >
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let cliente">{{ cliente.id }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="nome">
+        <th mat-header-cell *matHeaderCellDef>Nome</th>
+        <td mat-cell *matCellDef="let cliente">{{ cliente.nome }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="razao">
+        <th mat-header-cell *matHeaderCellDef>Razão</th>
+        <td mat-cell *matCellDef="let cliente">{{ cliente.razao }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="vendedor">
+        <th mat-header-cell *matHeaderCellDef>Vendedor</th>
+        <td mat-cell *matCellDef="let cliente">{{ cliente.vendedor?.nome }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="cnpj">
+        <th mat-header-cell *matHeaderCellDef>Cnpj</th>
+        <td mat-cell *matCellDef="let cliente">{{ cliente.cnpj }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="editar">
+        <th mat-header-cell *matHeaderCellDef>Editar</th>
+        <td mat-cell *matCellDef="let cliente">
+          <a routerLink="/sistema/cliente/form/{{ cliente.id }}">
+            <mat-icon> edit </mat-icon>
+          </a>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="view">
+        <th mat-header-cell *matHeaderCellDef>View</th>
+        <td mat-cell *matCellDef="let cliente">
+          <a href="#" (click)="preparaDeleteShow($event, cliente)">
+            <mat-icon>open_in_new</mat-icon>
+          </a>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>

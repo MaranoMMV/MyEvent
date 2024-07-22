@@ -1,0 +1,327 @@
+<h1>{{ evento?.id ? "Editar" : "Adicionar" }} Evento</h1>
+<mat-stepper #stepper>
+  <mat-step>
+    <ng-template matStepLabel
+      ><mat-icon>calendar_month</mat-icon>Evento</ng-template
+    >
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+      @if (evento?.id) {
+      <mat-form-field disabled="true">
+        <mat-label>ID:</mat-label>
+        <input formControlName="id" matInput placeholder="id" />
+      </mat-form-field>
+      }
+      <mat-form-field>
+        <mat-label>Nome:</mat-label>
+        <input
+          formControlName="nome"
+          matInput
+          placeholder="Digite o nome do vendedor(a)"
+        />
+      </mat-form-field>
+
+      <br />
+
+      @if (!evento?.id) {
+      <button type="submit" mat-raised-button color="primary">
+        <i class="fa fa-save"></i> Salvar Cadastro
+      </button>
+      }@else{
+      <button type="submit" mat-raised-button color="primary">
+        <i class="fa fa-sync-alt"></i> Atualizar
+      </button>
+      }
+
+      <button
+        mat-button
+        color="primary"
+        class="margin-button"
+        (click)="voltarListagem()"
+      >
+        <mat-icon>arrow_back</mat-icon>Voltar
+      </button>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel
+      ><mat-icon>location_on</mat-icon>Local</ng-template
+    >
+
+    <form
+      [formGroup]="formularioLocalEvento"
+      (ngSubmit)="onSubmitLocalEvento()"
+    >
+      @if(local?.id){
+      <mat-form-field>
+        <mat-label>Id:</mat-label>
+        <input
+          formControlName="id"
+          matInput
+          placeholder="Digite o id do local do evento"
+        />
+      </mat-form-field>
+      }
+
+      <mat-form-field>
+        <mat-label>Estado:</mat-label>
+        <input
+          formControlName="estado"
+          matInput
+          placeholder="Digite o estado do local do evento"
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Cidade:</mat-label>
+        <input
+          formControlName="cidade"
+          matInput
+          placeholder="Digite a cidade do local do evento"
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Bairro:</mat-label>
+        <input
+          formControlName="bairro"
+          matInput
+          placeholder="Digite o bairro do local do evento"
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Rua:</mat-label>
+        <input
+          formControlName="rua"
+          matInput
+          placeholder="Digite a rua do local do evento"
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Nome do Local:</mat-label>
+        <input
+          formControlName="nomeLocal"
+          matInput
+          placeholder="Digite o nome do local do evento"
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Numero:</mat-label>
+        <input
+          formControlName="numero"
+          matInput
+          placeholder="Digite o numero do local do evento"
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Evento:</mat-label>
+        <mat-select matInput formControlName="eventoId">
+          @for (item of eventos; track item) {
+          <mat-option [value]="item.id">{{ item.nome }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <br />
+      <button type="submit" mat-raised-button color="primary">
+        <i class="fa fa-save"></i> Salvar Cadastro
+      </button>
+    </form>
+
+    <h1>Verifica os locais por evento</h1>
+    <form
+      [formGroup]="formularioDeConsultaDeLocalPorEvento"
+      (ngSubmit)="onSubmitEventoLocalTable()"
+    >
+      <mat-form-field>
+        <mat-label>Evento:</mat-label>
+        <mat-select matInput formControlName="eventoId">
+          @for (item of eventos; track item) {
+          <mat-option [value]="item.id">{{ item.nome }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <br />
+      <button type="submit" mat-raised-button color="primary">
+        <mat-icon>search</mat-icon>Buscar
+      </button>
+    </form>
+
+    <table
+      mat-table
+      [dataSource]="EventoLocalPorEventoDataSouorce"
+      class="mat-elevation-z8"
+    >
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let local">{{ local.id }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="evento">
+        <th mat-header-cell *matHeaderCellDef>Evento</th>
+        <td mat-cell *matCellDef="let local">{{ local.evento.nome }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="estado">
+        <th mat-header-cell *matHeaderCellDef>Estado</th>
+        <td mat-cell *matCellDef="let local">{{ local.estadp }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="cidade">
+        <th mat-header-cell *matHeaderCellDef>Cidade</th>
+        <td mat-cell *matCellDef="let local">{{ local.cidade }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="nomeLocal">
+        <th mat-header-cell *matHeaderCellDef>Nome do Local</th>
+        <td mat-cell *matCellDef="let local">{{ local.nomeLocal }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="editar">
+        <th mat-header-cell *matHeaderCellDef>Editar</th>
+        <td mat-cell *matCellDef="let local">
+          <a routerLink="/sistema/evento/form/{{ local.id }}">
+            <mat-icon> edit </mat-icon>
+          </a>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel
+      ><mat-icon>schedule</mat-icon>Horarios</ng-template
+    >
+
+    <form
+      [formGroup]="formularioHorariosEvento"
+      (ngSubmit)="onSubmitHorario()"
+    >
+      @if(local?.id){
+      <mat-form-field>
+        <mat-label>Id:</mat-label>
+        <input
+          formControlName="id"
+          matInput
+          placeholder="Digite o id do local do evento"
+        />
+      </mat-form-field>
+      }
+
+      <mat-form-field class="example-full-width">
+        <mat-label> Escolha uma data </mat-label>
+        <input formControlName="data" matInput [matDatepicker]="picker" />
+        <mat-hint> MM/DD/AAAA </mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker">
+        </mat-datepicker-toggle>
+        <mat-datepicker #picker> </mat-datepicker>
+      </mat-form-field>
+      <!-- <mat-form-field>
+        <mat-label>Data:</mat-label>
+        <input
+          formControlName="data"
+          matInput
+          placeholder="Digite a data do evento"
+        />
+      </mat-form-field> -->
+      <mat-form-field>
+        <mat-label>horarioInicio:</mat-label>
+        <input
+          formControlName="horarioInicio"
+          matInput
+          placeholder="Digite o horarioInicio do evento"
+          mask="00:00"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>horarioFim:</mat-label>
+        <input
+          formControlName="horarioFim"
+          matInput
+          placeholder="Digite o horarioFim do evento"
+          mask="00:00"
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Local:</mat-label>
+        <mat-select matInput formControlName="localId">
+          @for (item of locais; track item) {
+          <mat-option [value]="item.id">{{ item.evento.nome }} - {{ item.nomeLocal }} </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <button type="submit" mat-raised-button color="primary">
+        <i class="fa fa-save"></i> Salvar Cadastro
+      </button>
+    </form>
+
+    <h1>Verifica os horarios pelo local</h1>
+    <form
+      [formGroup]="formularioDeConsultaLocalHorario"
+      (ngSubmit)="onSubmitEventoHorarioTable()"
+    >
+      <mat-form-field>
+        <mat-label>Locais:</mat-label>
+        <mat-select matInput formControlName="localId">
+          @for (item of locais; track item) {
+          <mat-option [value]="item.id">{{ item.evento.nome }} - {{ item.nomeLocal }} </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <br />
+      <button type="submit" mat-raised-button color="primary">
+        <mat-icon>search</mat-icon>Buscar
+      </button>
+    </form>
+
+    <table
+      mat-table
+      [dataSource]="EventoLocalPorHorarioDataSouorce"
+      class="mat-elevation-z8"
+    >
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let horario">{{ horario.id }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="data">
+        <th mat-header-cell *matHeaderCellDef>Data</th>
+        <td mat-cell *matCellDef="let horario">{{ horario.data }}</td>
+      </ng-container>
+      <ng-container matColumnDef="horarioInicio">
+        <th mat-header-cell *matHeaderCellDef>Horario inicio</th>
+        <td mat-cell *matCellDef="let horario">{{ horario.horarioInicio }}</td>
+      </ng-container>
+      <ng-container matColumnDef="horarioFim">
+        <th mat-header-cell *matHeaderCellDef>Horario Fim</th>
+        <td mat-cell *matCellDef="let horario">{{ horario.horarioFim }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="localId">
+        <th mat-header-cell *matHeaderCellDef>Local id</th>
+        <td mat-cell *matCellDef="let horario">{{ horario.localId }}</td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="editar">
+        <th mat-header-cell *matHeaderCellDef>Editar</th>
+        <td mat-cell *matCellDef="let local">
+          <a routerLink="/sistema/evento/form/{{ local.id }}">
+            <mat-icon> edit </mat-icon>
+          </a>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumnsHorario"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumnsHorario"></tr>
+    </table>
+  </mat-step>
+</mat-stepper>

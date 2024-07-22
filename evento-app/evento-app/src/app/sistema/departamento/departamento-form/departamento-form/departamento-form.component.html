@@ -1,0 +1,38 @@
+<h1>{{ departamento?.id ? "Editar" : "Adicionar" }} Departamento</h1>
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+
+  @if (departamento?.id) {
+  <mat-form-field disabled="true">
+    <mat-label>ID:</mat-label>
+    <input formControlName="id" matInput placeholder="id" />
+  </mat-form-field>
+  }
+
+  <mat-form-field>
+    <mat-label>Nome:</mat-label>
+    <input
+      formControlName="nome"
+      matInput
+      placeholder="Digite o nome do departamento"
+    />
+  </mat-form-field>
+  <br />
+  @if (!departamento?.id) {
+  <button type="submit" mat-raised-button color="primary">
+    <i class="fa fa-save"></i> Salvar Cadastro
+  </button>
+  } @if (departamento?.id) {
+  <button type="submit" mat-raised-button color="primary">
+    <i class="fa fa-sync-alt"></i> Atualizar
+  </button>
+  }
+
+  <button
+    mat-button
+    color="primary"
+    class="margin-button"
+    (click)="voltarListagem()"
+  >
+    <mat-icon>arrow_back</mat-icon>Voltar
+  </button>
+</form>

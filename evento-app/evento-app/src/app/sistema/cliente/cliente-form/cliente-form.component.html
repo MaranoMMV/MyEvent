@@ -1,0 +1,54 @@
+<h1>{{ cliente?.id ? "Editar" : "Adicionar" }} Cliente</h1>
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+  @if (cliente?.id) {
+  <mat-form-field disabled="true">
+    <mat-label>ID:</mat-label>
+    <input formControlName="id" matInput placeholder="id" />
+  </mat-form-field>
+  }
+
+  <mat-form-field>
+    <mat-label>Nome:</mat-label>
+    <input formControlName="nome" matInput placeholder="Digite o nome do Cliente(a)"/>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>razao:</mat-label>
+    <input formControlName="razao" matInput placeholder="Digite a razao do Cliente"/>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>telefone:</mat-label>
+    <input formControlName="telefone" matInput placeholder="Digite a telefone do Cliente" mask="(00) 00000-0000">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Vendedor:</mat-label>
+    <mat-select matInput formControlName="idVendedor">
+      @for (item of vendedores; track item) {
+      <mat-option [value]="item.id">{{ item.nome }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>cnpj:</mat-label>
+    <input formControlName="cnpj" matInput placeholder="Digite a cnpj do Cliente"  mask="00.000.000/0000-00"/>
+  </mat-form-field>
+
+  <br />
+  @if (!cliente?.id) {
+  <button type="submit" mat-raised-button color="primary">
+    <i class="fa fa-save"></i> Salvar Cadastro
+  </button>
+  } @if (cliente?.id) {
+  <button type="submit" mat-raised-button color="primary">
+    <i class="fa fa-sync-alt"></i> Atualizar
+  </button>
+  }
+
+  <button
+    mat-button
+    color="primary"
+    class="margin-button"
+    (click)="voltarListagem()"
+  >
+    <mat-icon>arrow_back</mat-icon>Voltar
+  </button>
+</form>

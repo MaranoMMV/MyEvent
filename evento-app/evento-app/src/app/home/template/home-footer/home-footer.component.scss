@@ -1,0 +1,22 @@
+footer{
+    background-color: rgba(0, 0, 0, 0.836);
+    padding: 50px 0 ;
+
+    h1{
+        text-align: center;
+        color:white;
+        font-size: 22px;
+    }
+    ::selection {
+        background: rgb(255, 255, 102);
+        color: black; /* opcional: você também pode alterar a cor do texto selecionado */
+    }
+    p{
+        color: white;
+        text-align: center;
+        font-size: 15px;
+        b{
+            font-size: 17px;
+        }
+    }
+}

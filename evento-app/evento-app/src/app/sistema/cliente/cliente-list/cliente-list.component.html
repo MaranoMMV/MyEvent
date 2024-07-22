@@ -1,0 +1,59 @@
+<mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" ngSkipHydration>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon">apps</mat-icon>
+      Geral
+    </ng-template>
+    <app-cliente-geral></app-cliente-geral>
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon">close</mat-icon>
+      Sem Vinculo
+    </ng-template>
+    <app-cliente-sem-vinculo></app-cliente-sem-vinculo>
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon>webhook</mat-icon>
+
+      Procurar por CNPJ
+    </ng-template>
+    <app-cliente-cnpj></app-cliente-cnpj>
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon>manage_search</mat-icon>
+      Procurar por ID
+    </ng-template>
+    <app-cliente-id></app-cliente-id>
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon>all_inbox</mat-icon>
+      Todos clientes por evento
+    </ng-template>
+    <app-cliente-por-evento></app-cliente-por-evento>
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon>all_inbox</mat-icon>
+      Clientes por evento Interesse
+    </ng-template>
+    <app-cliente-por-evento-interese></app-cliente-por-evento-interese>
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      
+      <mat-icon>account_circle</mat-icon>
+      Clientes por vendedor
+    </ng-template>
+    <app-cliente-por-vendedor></app-cliente-por-vendedor>
+  </mat-tab>
+</mat-tab-group>

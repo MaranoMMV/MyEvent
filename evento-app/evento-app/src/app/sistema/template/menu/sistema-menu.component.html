@@ -1,0 +1,34 @@
+<div class="example-container">
+  <mat-toolbar class="cor-toolbar">
+    <button mat-icon-button (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h1>MyEvent</h1>
+    <button mat-button class="sair" (click)="sair()">Sair</button>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-sidenav-container">
+    <mat-sidenav #snav mode="over">
+      <mat-nav-list>
+        <a mat-list-item routerLink="home">
+          <i class="material-icons">home</i><span> Home</span>
+        </a>
+        <a mat-list-item (click)="navigateVendedores()">
+          <i class="material-icons">account_circle</i><span> Vendedores</span>
+        </a>
+        <a mat-list-item routerLink="cliente">
+          <i class="material-icons">contacts</i><span> Clientes</span>
+        </a>
+        <a mat-list-item routerLink="departamento">
+          <i class="material-icons">work</i><span> Departamentos</span>
+        </a>
+        <a mat-list-item routerLink="evento">
+          <i class="material-icons">calendar_month</i><span> Eventos</span>
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

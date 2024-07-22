@@ -1,0 +1,62 @@
+.carousel {
+    width: 100vw; /* Define a largura como 100% da viewport */
+    height: 90vh; /* Define a altura como 100% da viewport */
+    overflow: hidden; /* Esconde qualquer conteúdo que ultrapasse o carrossel */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    background-attachment: fixed;
+    max-width: 100%;
+  }
+  
+  .slide {
+    width: 100%; /* Define a largura da imagem como 100% do slide */
+    height: 100vh; /* Define a altura da imagem como 100% do slide */
+    object-fit: cover; /* Faz a imagem cobrir toda a área do slide */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    background-attachment: fixed;
+    overflow: hidden;
+  }
+
+  .slide img {
+    width: 100%; /* Define a largura da imagem como 100% do slide */
+    height:100vh; /* Define a altura da imagem como 100% do slide */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    background-attachment: fixed;
+  }
+  
+  .carousel .slide-1 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-image: url('/assets/imagens/carousel/1.webp');
+  }
+  
+  .carousel .slide-2 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-image: url('/assets/imagens/carousel/2.webp');
+  }
+  
+  .carousel .slide-3 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-image: url('/assets/imagens/carousel/3.webp');
+  }
+  
+  .carousel .slide-4 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-image: url('/assets/imagens/carousel/4.webp');
+  }

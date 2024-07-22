@@ -1,0 +1,21 @@
+mat-form-field{
+    margin:5px;
+}
+
+h1{
+    font-size: 30px;
+}
+
+::ng-deep .mat-dialog-container {
+    max-height: 80vh;
+    overflow-y: auto;
+    border-radius: 0 !important;
+  }
+  
+  ::ng-deep .mat-dialog-content {
+    border-radius: 0 !important;
+  }
+
+  mat-card {
+    border-radius: none;
+  }

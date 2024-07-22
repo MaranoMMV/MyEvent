@@ -1,0 +1,289 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+}
+
+mat-form-field mat-label{
+  color: black;
+}
+
+.formulario_div{
+  background-color: rgb(32, 32, 32);
+  padding-bottom: 30px;
+}
+.menu{
+    background-color: white;
+    margin: 0 10%;
+    padding: 10%;
+    height: 30vh;
+}
+.menu h1{
+    font-size: 30px;
+    word-wrap: break-word;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.linha{
+  display: flex;
+  flex-flow: row wrap;
+  margin:auto;
+}
+
+.colunas_em_linha{
+  width: 30%;
+  text-align: center;
+  word-break: break-word;
+  color: rgba(44, 44, 44, 0.671);
+  border-width: 3px;
+  padding: auto;
+  margin: auto;
+  background-color: white;
+}
+
+.inputData{
+    border-color: #fffb00;
+    border-radius: 7px;
+    width: 300px;
+    height: 30px;
+    margin:3px;
+    border-width: 2px;
+    border-style: solid;
+    padding-left: 5px;
+    max-width: 100%;
+}
+
+
+.footer{
+    top: 100%;
+    background-color: black;
+    height: 20vh;
+}
+.inputData:hover{
+    border-color: #d35c70;
+    border-radius: 7px;
+}
+.buttonCadastro{
+    background-color: #2447b3;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    padding: 0 50px;
+    border-color:#2447b3 ;
+    border-radius: 7px;
+    height: 35px;
+    margin-top:10px;
+    cursor: pointer;
+    border-style: solid;
+}
+.form{
+    margin-top: 20px;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 5%;
+}
+.menuText{
+    margin-top:10px;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.divisaoTelaMenu{
+    max-width: 50%;
+}
+/* Div de organização da div */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .div-direita, .div-esquerda{
+    width: 50%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  @media (max-width: 700px) {
+    .div-esquerda, .div-direita {
+      width: 100%;
+    }
+    .div-direita {
+      order: 1;
+    }
+    .contato-3{
+        height: 65vh;
+    }
+  }
+ 
+.bloco {
+    flex: 0 0 33.33%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .bloco img {
+    width: 50px;
+    margin-right: 10px;
+  }
+  
+  @media (max-width: 768px) {
+    .bloco {
+      flex-basis: 100%;
+    }
+  }
+
+.imagemMenu{
+    height: auto;
+    width: 400px;
+    margin-top: 50px;
+    max-width: 100%;
+}
+
+.meio{
+    background-color: #2447b3;  
+    min-width: 100%;
+    padding-top: 3%;
+    padding-bottom: 5%;
+}
+
+.checkbox_branco{
+  color:white;
+}
+
+.meio h3{
+    color:white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+}
+
+.meio p{
+    color:white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    margin-bottom: 3%;
+}
+
+.margemMeio{
+    margin: 0 7%;
+}
+
+.centralizando{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.margemMeio p{
+    margin-top: 10px;
+}
+
+.contato{
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.contato-3{
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 30vh;
+}
+
+h1{
+    display: inline-block;
+}
+h5{
+    padding-left: 7px;
+    display: inline-block;
+    font-size: 33px;
+    color:#fffb00;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.contato p{
+    margin-top: 10px;
+}
+
+.contatoTelefone{
+    width: 250px;
+    height: 80px;
+    background-color: #fffb00;
+    color:white;
+    text-align:center;
+    padding:3px;
+}
+.contatoTelefone p{
+    margin: auto 0;
+}
+
+.contatoTelefone{
+    color: white;
+    font-size: 25px;
+}
+
+.venhaComAGente{
+    margin: 0,10% ;
+}
+footer{
+    background-color: black;
+    height: 20vh;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+mat-form-field{
+    margin:5px;
+}
+
+h1{
+    font-size: 30px;
+}
+
+::ng-deep .mat-dialog-container {
+    max-height: 80vh;
+    overflow-y: auto;
+    border-radius: 0 !important;
+  }
+  
+  ::ng-deep .mat-dialog-content {
+    border-radius: 0 !important;
+  }
+
+  mat-card {
+    border-radius: none;
+  }
+
+  .tituloEvento{
+    font-size: 40px;
+    color: #fffb00;
+    font-family: "DM Sans";
+  }
+
+  ::selection {
+    background: rgb(255, 255, 102);
+    color: black; /* opcional: você também pode alterar a cor do texto selecionado */
+}
+
+  p, h1{
+    margin-left: 10px;
+  }
+
+  .dm-sans , .h1 {
+    font-family: "DM Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 900;
+    font-style: normal;
+  }
+  
+  h6{
+    font-size: 17px;
+  }

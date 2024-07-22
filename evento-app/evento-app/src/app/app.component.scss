@@ -1,0 +1,11 @@
+::ng-deep .mat-dialog-container {
+    border-radius: 0 !important;
+  }
+  
+  ::ng-deep .mat-dialog-container > .mat-dialog-content {
+    border-radius: 0 !important;
+  }
+  
+  ::ng-deep .mat-dialog-title {
+    border-radius: 0 !important;
+  }

@@ -1,0 +1,19 @@
+<main>
+    <section class="form-section">
+        <!-- <img src="/assets/imagens/iconSistem.jpg" width="150px"/> -->
+        <h2>{{ title }}</h2>
+        <ng-content></ng-content>
+        <div class="btn-wrapper">
+            <button
+                    class="btn-primary"
+                    (click)="submit()"
+            >
+                {{ primaryBtnText }}
+            </button>
+        </div>
+    </section>
+    <section class="main-section">
+        <h1>MyEvent</h1>
+        <img src="/assets/imagens/myevent.svg" width="500px"/>
+    </section>
+</main>

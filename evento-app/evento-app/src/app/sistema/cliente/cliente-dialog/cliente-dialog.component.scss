@@ -1,0 +1,22 @@
+h1{
+    font-size: 30px;
+}
+
+p{
+    margin-top: 20px;
+    text-align: left;
+}
+
+::ng-deep .mat-dialog-container {
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 0 !important;
+  }
+  
+  ::ng-deep .mat-dialog-content {
+    border-radius: 0 !important;
+  }
+
+  app-cliente-dialog {
+    border-radius: 0;
+  }

@@ -1,0 +1,17 @@
+@if(evento) {
+    <div class="container">
+        <h2>{{ evento!.nome }}</h2>
+        <div class="centralizandoBlocos">
+            @for (local of locais; track $index) {
+            <div class="bloco">
+                <p><b>Nome do local: </b> {{local.nomeLocal}}</p>
+                <p><b>Bairro: </b> {{local.bairro}}</p>
+                <p><b>Cidade: </b> {{local.cidade}}</p>
+                <p><b>Estado: </b> {{local.estado}}</p>
+                <p><b>Numero: </b> {{local.numero}}</p>
+                <p><b>Rua: </b> {{local.rua}}</p>
+            </div>
+            }
+        </div>
+    </div>
+    }

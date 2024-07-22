@@ -1,0 +1,69 @@
+<mat-card style="text-align: center;">
+    <mat-card-header>
+        <mat-card-title>
+            <mat-icon>hail</mat-icon>
+            Cliente
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-tab-group>
+            <mat-tab label="Geral">
+                <p>
+                    <strong>ID:</strong> {{ cliente.id }} <br />
+                    <strong>Nome: </strong>{{ cliente.nome }}<br>
+                    <strong>Razão Social:</strong> {{ cliente.razao }}<br>
+                    <strong>Telefone: </strong>{{ cliente.telefone }}<br>
+                    <strong>CNPJ: </strong>{{ cliente.cnpj }}<br>
+                    <strong>Aceita receber emails: </strong>{{ cliente.aceitaReceberEmails ? 'Sim' :'Não'  }}<br>
+                    <strong>Vendedor: </strong>{{ cliente.vendedor!.nome }}<br>
+                </p>
+            </mat-tab>
+            <mat-tab label="Eventos Interessado">
+                <h1>Eventos Interessado</h1>
+
+                <table mat-table [dataSource]="EventosInteressadoPorClienteDataSouorce" class="mat-elevation-z8">
+        
+                    <ng-container matColumnDef="id">
+                      <th mat-header-cell *matHeaderCellDef> ID </th>
+                      <td mat-cell *matCellDef="let cliente"> {{ cliente.id }} </td>
+                    </ng-container>
+                
+                    <ng-container matColumnDef="nome">
+                        <th mat-header-cell *matHeaderCellDef> Nome </th>
+                        <td mat-cell *matCellDef="let cliente"> {{ cliente.nome }} </td>
+                      </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+
+            </mat-tab>
+            <mat-tab label="Eventos Participados">
+                <h1>Eventos Participados</h1>
+        
+                <table mat-table [dataSource]="EventosPorClienteDataSouorce" class="mat-elevation-z8">
+        
+                    <ng-container matColumnDef="id">
+                      <th mat-header-cell *matHeaderCellDef> ID </th>
+                      <td mat-cell *matCellDef="let cliente"> {{ cliente.id }} </td>
+                    </ng-container>
+                
+                    <ng-container matColumnDef="nome">
+                        <th mat-header-cell *matHeaderCellDef> Nome </th>
+                        <td mat-cell *matCellDef="let cliente"> {{ cliente.nome }} </td>
+                      </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+            </mat-tab>
+        </mat-tab-group>
+        
+        
+    </mat-card-content>
+
+    <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="fechar()">
+            Fechar
+        </button>
+        <button mat-flat-button (click)="onSubmit()"><mat-icon>add</mat-icon>Add Cliente ao ultimo evento <mat-icon>calendar_month</mat-icon></button>
+    </mat-card-actions>
+</mat-card>
